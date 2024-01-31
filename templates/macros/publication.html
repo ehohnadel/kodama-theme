@@ -75,9 +75,12 @@
 <div class="py-4 px-8 bg-white shadow-lg rounded-lg hover:shadow-xl">
 {% endif -%}
   <a href="{{ page.permalink | safe }}">
-    <p class="text-sm text-slate-400">{{publication::authors(page=page, bibtags=bibdata, links_allowed=false)}}</p>
     <h2 class="text-xl font-bold text-blue-600 hover:text-blue-800 visited:text-purple-600">{{publication::title(page=page, bibtags=bibdata)}}</h2>
+    <p class="text-sm text-slate-400">{{publication::authors(page=page, bibtags=bibdata, links_allowed=false)}}</p>
     <p class="text-sm text-slate-400">{{publication::details(page=page, bibtags=bibdata, links_allowed=false)}}</p>
+    {% if page.extra.co_first_authors == true -%}
+    <p class="text-sm text-slate-400">(*) joint first authors</p>
+    {% endif -%}
 
     {% if show_description and page.description -%}
     <p class="text-sm py-1"> {{ page.description | markdown(inline=true) | safe }} </p>
@@ -97,7 +100,9 @@
       {% elif page.extra.slides -%}
       <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" target="_blank" href="{{ config.base_url ~ page.path ~ page.extra.slides }}"> slides </a>
       {% endif -%}
-      {% if bibdata and bibdata.url -%}
+      {% if page.extra.url %}
+      <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" href="{{ page.extra.url }}"> url </a>
+      {% elif bibdata and bibdata.url %}
       <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" target="_blank" href="{{bibdata.url}}"> url </a>
       {% endif -%}
     {% endif -%}

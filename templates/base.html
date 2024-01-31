@@ -9,10 +9,6 @@
 <html lang="{{ lang | default(value=config.default_language)}}">
 
 <head>
-  {% set favicon = resize_image(path=config.extra.favicon, format="png", width=32, height=32) %}
-  <link rel="shortcut icon" href="{{ favicon.url }}" type="image/png">
-  <link rel="icon" href="{{ favicon.url }}" type="image/png">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta charset="utf-8">
@@ -48,7 +44,7 @@
   {% block footer -%}
   <footer class="bg-white">
     <div class="bg-white text-gray-400 container max-w-4xl mx-auto my-8 px-4">
-    © {{ config.title }}. Template <a class="underline" target="_blank" href="https://github.com/adfaure/kodama-theme">Kodama</a> made with <a class="underline" target="_blank" href="https://getzola.org">zola</a>, inspired by <a class="underline" target="_blank" href="https://wowchemy.com/"> wowchemy</a> academic theme.
+    © {{ config.title }}. Modified template <a class="underline" target="_blank" href="https://github.com/adfaure/kodama-theme">Kodama</a> made with <a class="underline" target="_blank" href="https://getzola.org">zola</a>, inspired by <a class="underline" target="_blank" href="https://wowchemy.com/"> wowchemy</a> academic theme.
     </div>
   </footer>
   {% endblock footer -%}

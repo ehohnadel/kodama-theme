@@ -11,7 +11,9 @@
       {% if email -%}
       <li class="font-bold text-lg pb-4 text-blue-600 hover:text-blue-800 visited:text-purple-600 flex-row flex-nowrap flex">
       <i>{{ icons::factory(icon="mail",classes="inline h-6 w-6 flex-no-shrink") }}</i>
-      <a href="mailto:{{ email }}"> {{ email }} </a></li>
+      <!-- <a href="mailto:{{ email }}"> {{ email }} </a> -->
+      <a> {{ email }} </a> 
+      </li>
       {% endif -%}
       {% for link in links -%}
       <li class="font-bold text-lg pb-4 text-blue-600 hover:text-blue-800 visited:text-purple-600">

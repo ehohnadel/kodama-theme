@@ -26,6 +26,9 @@
     <div class="grow">
       <p class="text-sm text-slate-400">{{publication::details(page=page, bibtags=bibdata)}}</p>
     </div>
+    {% if page.extra.co_first_authors == true -%}
+    <p class="text-sm text-slate-400">(*) joint first authors</p>
+    {% endif -%}
     <div class="grow pt-2"> 
       {% if page.extra.url_pdf %}
       <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" target="_blank" href="{{ page.extra.url_pdf }}"> pdf </a>
@@ -40,7 +43,9 @@
       <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" target="_blank" href="{{ config.base_url ~ page.path ~ page.extra.slides }}"> slides </a>
       {% endif %}
 
-      {% if bibdata and bibdata.url %}
+      {% if page.extra.url %}
+      <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" href="{{ page.extra.url }}"> url </a>
+      {% elif bibdata and bibdata.url %}
       <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" href="{{bibdata.url}}"> url </a>
       {% endif %}
     </div>
@@ -56,6 +61,8 @@
   <p class="font-bold">{{trans(key="Abstract", lang=lang)}}</p>
   <article class="prose prose-indigo max-w-3xl pb-4">{{abstract | safe}}</article>
   {% endif -%}
+
+  {{ page.content | safe }}
 
   {% if plaintex -%}
   <div>
